@@ -67,10 +67,39 @@ Figlet /etc/motd
 
 **Enable Remote GUI:**
 
-`apt-get install x11vnc net-tools`
+Install Gui:
+
+**First Create a Firewall Rule for Port 5900 and 5901 in Google Cloud on 0.0.0.0/0**
+
+`apt-get install xfce4 xfce4-goodies -y`
+
+Configure:
+
+`nano ~/.vnc/xstartup`
+
+Put:
+
+#!/bin/bash
+xrdb $HOME/.Xresources
+startxfce4 &
+
+`chmod +x ~/.vnc/xstartup`
+
+
+First Try with tightvncserver 
+
+`apt-get install tightvncserver`
+
+Then try with X11vnc if you need.
+
+
+`apt-get install x11vnc novnc net-tools`
 
 Set PW:
 `x11vnc -storepasswd`
+
+Check:
+`ps wwwaux | grep auth`
 
 **Connect with RealVNC**
 
